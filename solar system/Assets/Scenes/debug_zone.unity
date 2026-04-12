@@ -333,11 +333,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1100956913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c6ed2b9ff8e6541ac16e3a91a2723f, type: 3}
+  m_Script: {fileID: 11500000, guid: 90fbb2c31dcb7904baa913571caf1381, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::planetrotation
-  rotationSpeed: 0
-  sun: {fileID: 1100956913}
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetRotation
+  rotationSpeed: 30
+  rotationAxis: {x: 0, y: 1, z: 0}
+  axialTilt: 0
+  timeScale: 1
+  isPaused: 0
 --- !u!1 &2026411811
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,8 +480,8 @@ GameObject:
   - component: {fileID: 2039734687}
   - component: {fileID: 2039734686}
   - component: {fileID: 2039734685}
-  - component: {fileID: 2039734689}
   - component: {fileID: 2039734690}
+  - component: {fileID: 2039734689}
   m_Layer: 0
   m_Name: planeta
   m_TagString: Untagged
@@ -573,7 +576,7 @@ Transform:
   m_GameObject: {fileID: 2039734684}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.35, z: 13}
+  m_LocalPosition: {x: 0.5, y: 0.35, z: 20.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -588,9 +591,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2039734684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 082f780a4139e4441b2272bf79e3d398, type: 3}
+  m_Script: {fileID: 11500000, guid: 90fbb2c31dcb7904baa913571caf1381, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::planetmovement
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetRotation
+  rotationSpeed: 30
+  rotationAxis: {x: 0, y: 1, z: 0}
+  axialTilt: 0
+  timeScale: 1
+  isPaused: 0
 --- !u!114 &2039734690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,11 +608,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2039734684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c6ed2b9ff8e6541ac16e3a91a2723f, type: 3}
+  m_Script: {fileID: 11500000, guid: dfaed55282782cb4ba55138db0a8276c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::planetrotation
-  rotationSpeed: 0
-  sun: {fileID: 1100956913}
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetOrbit
+  centralBody: {fileID: 1100956917}
+  semiMajorAxis: 10
+  semiMinorAxis: 8
+  orbitSpeed: 20
+  orbitalInclination: 0
+  periapsisAngle: 0
+  timeScale: 1
+  isPaused: 0
+  showOrbitGizmo: 1
+  gizmoColor: {r: 0.3, g: 0.7, b: 1, a: 0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
