@@ -336,6 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c6ed2b9ff8e6541ac16e3a91a2723f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::planetrotation
+  rotationSpeed: 0
+  sun: {fileID: 1100956913}
 --- !u!1 &2026411811
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,6 +603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c6ed2b9ff8e6541ac16e3a91a2723f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::planetrotation
+  rotationSpeed: 0
+  sun: {fileID: 1100956913}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
