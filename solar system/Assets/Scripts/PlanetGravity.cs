@@ -1,74 +1,27 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
-/// <summary>
-/// Atrae al jugador hacia la superficie del planeta.
-/// AÒade este script al planeta junto con un SphereCollider en modo Trigger.
-/// </summary>
 public class PlanetGravity : MonoBehaviour
 {
     [Header("Gravedad")]
-    [Tooltip("Fuerza de gravedad hacia el centro del planeta.")]
-    public float gravity = 9.81f;
-
-    [Tooltip("Radio del campo gravitacional (debe ser mayor que el planeta).")]
-    public float gravityRadius = 10f;
+    public float gravity = 9.8f;
+    public float gravityRadius = 15f;
 
     [Header("Debug")]
     public bool showGizmo = true;
 
-    private SphereCollider gravityField;
-
     void Start()
     {
-        // Crear o configurar el SphereCollider como trigger autom·ticamente
-        gravityField = GetComponent<SphereCollider>();
-        if (gravityField == null)
-            gravityField = gameObject.AddComponent<SphereCollider>();
-
+        // Collider trigger para detectar jugadores en el campo gravitacional
+        SphereCollider gravityField = gameObject.AddComponent<SphereCollider>();
         gravityField.isTrigger = true;
         gravityField.radius = gravityRadius;
+
+        // Aseg√∫rate de que el planeta tenga un collider s√≥lido para la superficie
+        // (a√±√°delo manualmente en el Editor, NO aqu√≠ como trigger)
     }
 
-    void OnTriggerStay(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
+    // PlanetGravity.cs
 
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (rb == null) return;
-
-        // DirecciÛn desde el jugador hacia el centro del planeta
-        Vector3 directionToCenter = (transform.position - other.transform.position).normalized;
-
-        // Aplicar fuerza gravitacional
-        rb.AddForce(directionToCenter * gravity, ForceMode.Acceleration);
-
-        // Rotar al jugador para que sus pies apunten al planeta
-        AlignPlayerToPlanet(other.transform, directionToCenter);
-    }
-
-    private void AlignPlayerToPlanet(Transform player, Vector3 directionToCenter)
-    {
-        Quaternion targetRotation = Quaternion.FromToRotation(
-            -player.up,      // "abajo" del jugador
-            directionToCenter // direcciÛn al centro
-        ) * player.rotation;
-
-        player.rotation = Quaternion.Slerp(
-            player.rotation,
-            targetRotation,
-            10f * Time.deltaTime
-        );
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
-
-        // Al salir del campo gravitacional, quitar gravedad
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (rb != null)
-            rb.useGravity = false;
-    }
 
 #if UNITY_EDITOR
     void OnDrawGizmos()
