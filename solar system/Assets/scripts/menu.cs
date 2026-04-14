@@ -22,13 +22,13 @@ public class menu : MonoBehaviour
     }
     void prepareUI()
     {
-        if (Input.GetKey(KeyCode.Escape) && menuCanvas.alpha == 0)
+        if (menuCanvas.alpha == 0)
         {
             Time.timeScale = 0;
             menuCanvas.alpha = 1;
             menuCanvas.blocksRaycasts = true;
         }
-        else if (Input.GetKey(KeyCode.Space) && menuCanvas.alpha == 1)
+        else if (menuCanvas.alpha == 1)
         {
             Time.timeScale = 1;
             menuCanvas.alpha = 0;
@@ -37,6 +37,9 @@ public class menu : MonoBehaviour
     }
     void Update()
     {
-        prepareUI();
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            prepareUI();
+        }
     }
 }

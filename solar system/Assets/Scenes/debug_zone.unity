@@ -1901,9 +1901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0/0
-
-'
+  m_text: 0/9
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3514,8 +3512,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::menu
   menuCanvas: {fileID: 74891516}
   colecctxt: {fileID: 1204822364}
-  botonSalir: {fileID: 0}
-  botonContinuar: {fileID: 0}
+  botonSalir: {fileID: 125133128}
+  botonContinuar: {fileID: 776723001}
 --- !u!1 &2141370378
 GameObject:
   m_ObjectHideFlags: 0
