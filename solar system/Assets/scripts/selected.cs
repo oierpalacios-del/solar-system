@@ -8,32 +8,45 @@ public class interactor : MonoBehaviour
     public GameObject TextDetect;
     GameObject ultimoReconozido = null;
     int contadorobj = 0;
+    public menu menu;
+    public CanvasGroup selectCanvas;
     // Start is called before the first frame update
     void Start()
     {
-        mask = LayerMask.GetMask("RaycastDetect");
+        mask = LayerMask.GetMask("raycastDetect");
         TextDetect.SetActive(false);
+
     }
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hitinfo;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitinfo, distance, mask))
+        if (menu.menuCanvas.alpha == 0)
         {
-            Deselect();
-
-            if (hitinfo.collider.tag == "Objeto Interactivo")
+            selectCanvas.alpha = 1;
+            selectCanvas.blocksRaycasts = true;
+            RaycastHit hitinfo;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitinfo, distance, mask))
             {
-                SelectedObject(hitinfo.transform);
-                if (Input.GetKeyDown(KeyCode.F))
+                Deselect();
+                if (hitinfo.collider.tag == "bjetoInteractivo")
                 {
-                    contadorobj++;
+                    SelectedObject(hitinfo.transform);
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        contadorobj++;
+                        menu.changeText(contadorobj);
+                    }
                 }
+            }
+            else
+            {
+                Deselect();
             }
         }
         else
         {
-            Deselect();
+            selectCanvas.alpha = 0;
+            selectCanvas.blocksRaycasts = false;
         }
     }
     void SelectedObject(Transform transform)

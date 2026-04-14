@@ -7,6 +7,7 @@ public class mouseLook : MonoBehaviour
     float xRotation = 0f;
     bool debuging;
     bool isPaused;
+    [SerializeField] private menu menu;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -15,7 +16,11 @@ public class mouseLook : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V) && !debuging)
+        if(menu.menuCanvas.alpha == 1)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else if (Input.GetKeyDown(KeyCode.V) && !debuging)
         {
             Cursor.lockState = CursorLockMode.None;
             debuging = true;
@@ -23,6 +28,7 @@ public class mouseLook : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.V) && debuging)
         {
             debuging = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
         else if (!debuging)
         {
